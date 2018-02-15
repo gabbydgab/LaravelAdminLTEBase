@@ -15,8 +15,8 @@
         "css-loader": "^0.28.9",
         "font-awesome": "^4.7.0",
         "laravel-mix": "^2.0",
-        "lodash": "^4.17.4",
-        "postcss-loader": "^2.0.10",
-        "vue": "^2.5.7"
+        "lodash": "^4.17.5",
+        "postcss-loader": "^2.1.0",
+        "vue": "^2.5.13"
     }
 }
