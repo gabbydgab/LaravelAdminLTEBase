@@ -12,11 +12,11 @@
     "devDependencies": {
         "axios": "^0.18",
         "cross-env": "^5.1",
-        "css-loader": "^0.28.10",
+        "css-loader": "^0.28.11",
         "font-awesome": "^4.7.0",
-        "laravel-mix": "^2.0",
-        "lodash": "^4.17.5",
-        "postcss-loader": "^2.1.1",
-        "vue": "^2.5.13"
+        "laravel-mix": "^2.1",
+        "lodash": "^4.17.10",
+        "postcss-loader": "^2.1.4",
+        "vue": "^2.5.16"
     }
 }
