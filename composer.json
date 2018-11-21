@@ -4,23 +4,23 @@
     "type": "project",
     "require": {
         "php": "~7.2.7",
-        "barryvdh/laravel-cors": "^v0.11.0",
+        "barryvdh/laravel-cors": "^0.11.2",
         "fideloper/proxy": "^4.0.0",
-        "jeroennoten/laravel-adminlte": "^v1.23.2",
-        "laravel/framework": "^v5.6.29",
+        "jeroennoten/laravel-adminlte": "^1.24.2",
+        "laravel/framework": "^5.7.13",
         "nwidart/laravel-modules": "^3.3.1",
         "roave/security-advisories": "dev-master",
-        "yajra/laravel-datatables-oracle": "^v8.7.1"
+        "yajra/laravel-datatables-oracle": "^8.11.0"
     },
     "require-dev": {
-        "filp/whoops": "^2.2.0",
+        "filp/whoops": "^2.3.1",
         "fzaninotto/faker": "^v1.8.0",
-        "laravel/tinker": "^v1.0.7",
-        "malukenho/mcbumpface": "^0.1.1",
-        "mockery/mockery": "^1.1.0",
+        "laravel/tinker": "^1.0.8",
+        "malukenho/mcbumpface": "^0.1.2",
+        "mockery/mockery": "^1.2.0",
         "nunomaduro/collision": "^v1.1.22",
-        "phpunit/phpunit": "^7.3.1",
-        "sebastian/phpcpd": "^4.0.0",
+        "phpunit/phpunit": "^7.4.4",
+        "sebastian/phpcpd": "^4.1.0",
         "zendframework/zend-coding-standard": "^1.0.0"
     },
     "autoload": {
