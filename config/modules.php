@@ -1,5 +1,7 @@
 <?php
 
+use Nwidart\Modules\Activators\FileActivator;
+
 return [
 
     /*
@@ -26,8 +28,8 @@ return [
         'enabled' => false,
         'path' => base_path() . '/vendor/nwidart/laravel-modules/src/Commands/stubs',
         'files' => [
-            'start' => 'start.php',
-            'routes' => 'Http/routes.php',
+            'routes/web' => 'Routes/web.php',
+            'routes/api' => 'Routes/api.php',
             'views/index' => 'Resources/views/index.blade.php',
             'views/master' => 'Resources/views/layouts/master.blade.php',
             'scaffold/config' => 'Config/config.php',
@@ -38,10 +40,10 @@ return [
             'package' => 'package.json',
         ],
         'replacements' => [
-            'start' => ['LOWER_NAME', 'ROUTES_LOCATION'],
-            'routes' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE'],
+            'routes/web' => ['LOWER_NAME', 'STUDLY_NAME'],
+            'routes/api' => ['LOWER_NAME'],
             'webpack' => ['LOWER_NAME'],
-            'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE'],
+            'json' => ['LOWER_NAME', 'STUDLY_NAME', 'MODULE_NAMESPACE', 'PROVIDER_NAMESPACE'],
             'views/index' => ['LOWER_NAME'],
             'views/master' => ['LOWER_NAME', 'STUDLY_NAME'],
             'scaffold/config' => ['STUDLY_NAME'],
@@ -52,9 +54,10 @@ return [
                 'AUTHOR_NAME',
                 'AUTHOR_EMAIL',
                 'MODULE_NAMESPACE',
+                'PROVIDER_NAMESPACE',
             ],
         ],
-        'gitkeep' => true,
+        'gitkeep' => false,
     ],
     'paths' => [
         /*
@@ -97,20 +100,22 @@ return [
         | Set the generate key to false to not generate that folder
         */
         'generator' => [
-            'config' => ['path' => 'Config', 'generate' => false],
+            'config' => ['path' => 'Config', 'generate' => true],
             'command' => ['path' => 'Console', 'generate' => false],
             'migration' => ['path' => 'Database/Migrations', 'generate' => false],
             'seeder' => ['path' => 'Database/Seeders', 'generate' => false],
             'factory' => ['path' => 'Database/Factories', 'generate' => false],
             'model' => ['path' => 'Entities', 'generate' => false],
+            'routes' => ['path' => 'Routes', 'generate' => false],
             'controller' => ['path' => 'Http/Controllers', 'generate' => false],
             'filter' => ['path' => 'Http/Middleware', 'generate' => false],
             'request' => ['path' => 'Http/Requests', 'generate' => false],
-            'provider' => ['path' => 'Providers', 'generate' => false],
+            'provider' => ['path' => 'Providers', 'generate' => true],
             'assets' => ['path' => 'Resources/assets', 'generate' => false],
             'lang' => ['path' => 'Resources/lang', 'generate' => false],
             'views' => ['path' => 'Resources/views', 'generate' => false],
-            'test' => ['path' => 'Tests', 'generate' => false],
+            'test' => ['path' => 'Tests/Unit', 'generate' => true],
+            'test-feature' => ['path' => 'Tests/Feature', 'generate' => true],
             'repository' => ['path' => 'Repositories', 'generate' => false],
             'event' => ['path' => 'Events', 'generate' => false],
             'listener' => ['path' => 'Listeners', 'generate' => false],
@@ -150,8 +155,8 @@ return [
     'composer' => [
         'vendor' => 'codingmatters',
         'author' => [
-            'name' => 'Gab Amba',
-            'email' => 'codingmatters.today@gmail.com',
+            'name' => 'Coding Matters Software Development Services',
+            'email' => 'support@codingmatters.today',
         ],
     ],
     /*
@@ -185,4 +190,24 @@ return [
          */
         'files' => 'register',
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Activators
+    |--------------------------------------------------------------------------
+    |
+    | You can define new types of activators here, file, database etc. The only
+    | required parameter is 'class'.
+    | The file activator will store the activation status in storage/installed_modules
+    */
+    'activators' => [
+        'file' => [
+            'class' => FileActivator::class,
+            'statuses-file' => base_path('modules_statuses.json'),
+            'cache-key' => 'activator.installed',
+            'cache-lifetime' => 604800,
+        ],
+    ],
+
+    'activator' => 'file',
 ];
